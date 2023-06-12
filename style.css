@@ -1,0 +1,490 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: zingRust;
+  src: url('fonts/zingRust/zingsansrustldemo-base-webfont.woff2') format('woff2'),
+    url('fonts/zingRust/zingsansrustldemo-base-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: sanomat;
+  src: url('fonts/sanomat/sanomatsans-regular-trial-webfont.woff2') format('woff2'),
+    url('fonts/sanomat/sanomatsans-regular-trial-webfont.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* Configuración global */
+body {
+  margin: 0;
+  padding: 0;
+  background: #34458A;
+  background: linear-gradient(to top right, #34458A 0%, #293158 100%);
+  font-family: zingRust, sanomat, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Título */
+h1,
+h2 {
+  color: #293158;
+}
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  perspective: 1000px;
+}
+
+/* Contenedor del formulario */
+.form-container {
+  background-color: #e8cf58;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #fff;
+  box-shadow: 0 0 6px 2px #edbf00, 0 0 20px 20px rgba(0, 0, 0, 0.19);
+}
+
+/* Formulario */
+form {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Grupo de formulario */
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 88%;
+}
+
+/* Etiqueta del formulario */
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #293158;
+}
+
+/* Campos de entrada de texto */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #edbf00;
+  box-sizing: border-box;
+}
+
+/* Botones de alternancia */
+#button-toggle-registry,
+#button-toggle-login {
+  font-family: sanomat;
+  width: 100%;
+  padding: 10px;
+  background-color: #293158;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Botones de alternancia en hover */
+#button-toggle-registry:hover,
+#button-toggle-login:hover {
+  background-color: #34458A;
+}
+
+.active {
+  box-shadow: 0 0 6px 2px #edbf00;
+  border: 1px solid #fff;
+}
+
+.inactive {
+  border: none;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.495);
+}
+
+/* Estilos de los botones */
+.button {
+  width: 88%;
+  padding: 10px;
+  background-color: #293158;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.495);
+}
+
+/* Efecto de hover en los botones */
+.button:hover {
+  background-color: #34458a;
+}
+
+/* Efecto de active en los botones */
+button:active {
+  filter: brightness(0.7);
+  box-shadow: 0 3px #666;
+  transform: translateY(3px);
+  transition-duration: 0.3s;
+}
+
+/* Grupo de alternancia */
+.toggle-group {
+  margin: 0 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor de la alternancia */
+.toggle-container {
+  position: relative;
+  transform: translateY(-100px);
+  text-align: center;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 36%;
+}
+
+/* Texto de alternancia */
+.toggle-text {
+  margin: 5px;
+  padding: 5px;
+}
+
+/* Interruptor de alternancia */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 4.5em;
+  height: 2em;
+}
+
+/* Entrada del interruptor */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Control deslizante del interruptor */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 1px 2px 5px 1px #00000054;
+  transition: .4s;
+  border-radius: 30px;
+}
+
+/* Antes del control deslizante del interruptor */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 20px;
+  left: 0.3em;
+  bottom: 0.3em;
+  background: linear-gradient(45deg, #dedede, #fff);
+  box-shadow: 0 6px 7px #000;
+  transition: .4s;
+}
+
+/* Estilo del interruptor activado */
+.switch input:checked+.slider {
+  background-color: #293158;
+}
+
+/* Estilo del interruptor activado antes del control deslizante */
+.switch input:checked+.slider:before {
+  transform: translateX(2.5em);
+}
+
+/* Contenedor de la tarjeta giratoria */
+.flip-container {
+  perspective: 1000px;
+}
+
+/* Clase adicional para la tarjeta giratoria */
+.flip-container.toggled .flipper {
+  transform: rotateY(180deg);
+}
+
+/* Contenedor de la tarjeta, frontal y trasera */
+.flip-container,
+.front,
+.back {
+  width: 320px;
+  height: 480px;
+}
+
+/* Tarjeta giratoria */
+.flipper {
+  transition: 0.8s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* Parte frontal de la tarjeta */
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Estilos de la parte frontal */
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+/* Estilos de la parte trasera */
+.back {
+  transform: rotateY(180deg);
+}
+
+/* Estilos del fondo animado */
+
+.area {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+
+}
+
+.circles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circles li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: #ffffff33;
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+
+}
+
+.circles li:nth-child(1) {
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2) {
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3) {
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5) {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6) {
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7) {
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8) {
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9) {
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10) {
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+@keyframes animate {
+
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 0;
+  }
+
+  100% {
+    transform: translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 50%;
+  }
+
+}
+
+.message-container {
+  padding: 20px;
+}
+
+.error-message {
+  color: #fff;
+  text-shadow: 1px 1px #451212;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-data {
+  margin-top: 20px;
+}
+
+.user-data table {
+  width: 100%;
+}
+
+.user-data table tr td {
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #293158;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.495);
+}
+
+.btn:hover {
+  background-color: #34458A;
+}
+
+.btn:active {
+  filter: brightness(0.7);
+  box-shadow: 0 3px #666;
+  transform: translateY(3px);
+  transition-duration: 0.3s;
+}
+
+/* Tabla */
+/* Título */
+h2 {
+  color: #293158;
+}
+
+table {
+  font-family: sanomat;
+  width: 90%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #e8cf58;
+  border-radius: 6px;
+  box-shadow: 0 0 6px 2px #edbf00, 0 0 20px 20px rgba(0, 0, 0, 0.19);
+}
+
+/* Encabezado de la tabla */
+table th {
+  padding: 10px;
+  background-color: #293158;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* Celdas de la tabla */
+table td {
+  padding: 10px;
+  border-bottom: 1px solid #edbf00;
+  color: #293158;
+  border-radius: 6px;
+}
+
+/* Estilo de hover en las filas de la tabla */
+table tr:hover {
+  background-color: #f6df84;
+}
